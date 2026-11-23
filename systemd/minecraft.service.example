@@ -10,6 +10,14 @@ WorkingDirectory=/srv/minecraft
 ExecStart=/usr/bin/java -Xms1G -Xmx2G -jar server.jar --nogui
 Restart=on-failure
 RestartSec=10
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/minecraft
+CapabilityBoundingSet=
+AmbientCapabilities=
 
 [Install]
 WantedBy=multi-user.target
