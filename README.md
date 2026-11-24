@@ -5,8 +5,10 @@ Notes and starter files for running a Minecraft server and proxy on cloud hosts.
 - [Network and proxy notes](NETWORK.md)
 - [Operations and backups](operations.md)
 - [Example systemd service](systemd/minecraft.service.example)
+- [Velocity proxy service](systemd/velocity.service.example)
+- [Queue Paper service](systemd/queue-paper.service.example)
 - [Fiesta plugin inventory](https://github.com/open-fiestasmp/FiestaServerKit/blob/main/PLUGINS.md)
 
-Create a dedicated service user, make it own `/srv/minecraft`, install the Java version your server needs, and edit the example service's paths and memory settings. Check it with `systemd-analyze verify` before copying it to `/etc/systemd/system/`; then reload systemd and check the journal after starting. The example limits the service's writable paths and Linux capabilities. It does not set up your firewall or proxy for you.
+Create a separate service user and working directory for each process. Install the Java version each server needs, then edit the unit's user, path, heap and jar name. Check a unit with `systemd-analyze verify` before copying it to `/etc/systemd/system/`; after starting it, check the journal. These units limit writable paths and Linux capabilities. They do not set up your firewall or proxy.
 
 This repo is a community example with no production configs or credentials. It's not an official Minecraft or cloud provider project.
