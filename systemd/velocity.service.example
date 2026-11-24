@@ -1,0 +1,23 @@
+[Unit]
+Description=Velocity Minecraft proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=velocity
+Group=velocity
+WorkingDirectory=/srv/velocity
+ExecStart=/usr/bin/java -Xms256M -Xmx768M -XX:ActiveProcessorCount=2 -jar velocity.jar
+Restart=on-failure
+RestartSec=5
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/velocity
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target
